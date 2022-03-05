@@ -1,4 +1,3 @@
-
 import React, { useState, useRef, useEffect} from 'react';
 import Todolist from './Todolist';
 import './app.css';
@@ -43,11 +42,11 @@ function toggleTodo(id){
   return (
     <div class="container">
       <div class="content">
-      <Todolist  todos={todos} toggleTodo={toggleTodo}/>
-      <input  ref={todoNameRef}  type="text"/>
-      <button onClick={handleAddTodo}>Add Todo</button>
-      <button onClick={handleClearTodos}>Clear Complete</button>
-      <div>{todos.filter(todo => !todo.complete).length} left to do</div>
+        <Todolist  todos={todos} toggleTodo={toggleTodo}/>
+        <input  ref={todoNameRef}  type="text"/>
+        <button onClick={handleAddTodo}>Add Todo</button>
+        <button onClick={handleClearTodos}>Clear Complete</button>
+        <div>{todos.filter(todo => !todo.complete).length} left to do</div>
       </div>
     </div>
 
