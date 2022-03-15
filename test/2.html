@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        /*//copy a text to the clipboard
+        const copy_to_clipboard = str =>{
+            const el = document.createElement('textarea');
+            el.value= str;
+            el.setAttribute('readonly', '');
+            el.style.position = 'absolute';
+            document.body.appendChild(el);
+            const selected = document.getSelection().rangeCount > 0 ? document.getRangeAt(0) : false;
+            el.select()
+            document.execCommand('copy');
+            document.body.removeChild(el);
+            if(selected){
+                document.getSelection().removeAllRanges();
+                document.getSelection().addRange(selected);
+            }
+        };*/
+        /*//number to array
+        const digitize = n => [...`${n}`].map(i => parseInt(i));
+        console.log(digitize(123354));
+
+
+        filename="index.php"
+        console.log(filename.split('.').pop());
+        console.log(document.URL);*/
+        /*
+        const powerset = arr=>
+            arr.reduce((a, v) =>
+                    a.concat(a.map(r =>
+                        [v].concat(r))),[[]]);
+        console.log(powerset([1, 2]));      
+        */          
+    </script>
+</body>
+</html>
