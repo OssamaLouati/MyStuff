@@ -6,6 +6,6 @@ function multiply(){
 function divide(){
     num1 = document.getElementById("firstnumber").value;
     num2 = document.getElementById("secondnumber").value;
-    document.getElementById("res").innerHTML = num1 / num2;
+    document.getElementById("res").innerHTML = num1/num2;
 
 }
