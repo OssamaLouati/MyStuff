@@ -2,6 +2,7 @@ import React, { useEffect, useState} from 'react';
 import Movie from "./Movie.js";
 import './app.css';
 import Filter from "./filter";
+import Navbar from "./navbar";
 import { motion, AnimatePresence} from 'framer-motion/dist/framer-motion';
 
 function app(){
@@ -25,10 +26,10 @@ function app(){
     return(
         
         <div className="filter-container">
+            <Navbar />
             <Filter  popular={popular} setFiltered={setFiltered} activeGenre={activeGnere} setActiveGenre={setActiveGenre}/>
 
-                <motion.div layout
-                            className="popular-movies">
+                <motion.div layout className="popular-movies">
                             
                 <AnimatePresence>
                 {filtered.map(movie => {
