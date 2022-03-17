@@ -2,6 +2,8 @@ import static org.junit.jupiter.api.Assertions.*;
 
 import java.util.Random;
 
+import org.junit.jupiter.api.BeforeAll;
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.RepeatedTest;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
@@ -46,10 +48,30 @@ class testFB {
 		assertEquals(expected, res, "!!!");
 	}
 	*/
+	static Point a;
 	
+	@BeforeAll
+	static void init() {
+		a = new Point(1,2);
+		System.out.println("init");
+	}
+	
+	/*
+	
+	@BeforeEach
+	public void init() {
+		a = new Point(1,2);
+		System.out.println("inti All");
+	}
+	
+	public void ens(){
+		a=null;
+		System.out.println("end");
+	}
+	*/
 	@Test
 	public final void testTranslater0_0() {
-		Point a = new Point(1,2);
+		//Point a = new Point(1,2);
 		Point attendu = new Point(1,2);
 		Point obtenu = a.translater(0, 0);
 		assertEquals(attendu, obtenu);
@@ -57,7 +79,7 @@ class testFB {
 	}
 	@Test
 	public final void testEquals() {
-		Point a = new Point(1,2);
+		//Point a = new Point(1,2);
 		Point b = new Point(1,2);
 		assertTrue(a.equals(b));
 		
@@ -65,7 +87,7 @@ class testFB {
 	
 	@RepeatedTest(10)
 	public final void testTranslater1_3() {
-		Point a = new Point(1,2);
+		//Point a = new Point(1,2);
 		Point attendu = new Point(2,5);
 		Point obtenu = a.translater(1,3);
 		assertEquals(attendu, obtenu);
