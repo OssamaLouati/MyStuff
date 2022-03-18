@@ -1,9 +1,3 @@
-
-<div style="position: relative; top: -16px; right: -706px;">
-  <img src=".logoinpt.png" alt="">
-  
-</div>
-
 ```css
 #MyStuff { 
   owner: Oussama LOUATIi;
@@ -13,3 +7,8 @@
   type: academic projects,work and files;
 }
 ```  
+
+<div >
+  <img src="/logoinpt.png" style="width:14rem;">
+  
+</div>
