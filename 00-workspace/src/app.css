@@ -1,6 +1,12 @@
+.filter-container{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin : 1%;
+}
+
 .filter-container button{
-    margin: right 2rem; 
-    margin: 1%;
+    margin: right 2rem;   
     min-width: 5rem;
     margin-left: 0.5rem;
     padding: 0.5rem 1rem;
@@ -37,4 +43,7 @@ img{
 
 h2{
     font-size: 0.8rem;
+}
+.centering{
+    align-items: center;
 }

@@ -24,22 +24,25 @@ function app(){
     };
 
     return(
-        
-        <div className="filter-container">
+        <>
+        <div>
             <Navbar />
-            <Filter  popular={popular} setFiltered={setFiltered} activeGenre={activeGnere} setActiveGenre={setActiveGenre}/>
+        </div>
+            <div className="body-container">
+            <div className="filter-container">
+                <Filter  popular={popular} setFiltered={setFiltered} activeGenre={activeGnere} setActiveGenre={setActiveGenre}/>
+        </div>
 
                 <motion.div layout className="popular-movies">
-                            
-                <AnimatePresence>
-                {filtered.map(movie => {
-                    return <Movie key={movie.id} movie={movie}/>;
-                })}
-                </AnimatePresence>
-                </motion.div>
 
-            </div>
-        
+                    <AnimatePresence>
+                        {filtered.map(movie => {
+                            return <Movie key={movie.id} movie={movie}/>;
+                        })}
+                    </AnimatePresence>
+                </motion.div>
+        </div>
+        </>
     )
 }
 export default app 
