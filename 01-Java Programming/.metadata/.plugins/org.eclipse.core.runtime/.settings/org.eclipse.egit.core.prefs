@@ -1,3 +1,6 @@
-GitRepositoriesView.GitDirectories=C\:\\Users\\louat\\Documents\\GitHub\\MyStuff\\.git;C\:\\Users\\louat\\Documents\\GitHub\\MyStuff\\01-Java Programming\\.git;
-GitRepositoriesView.GitDirectories.relative=C\:\\Users\\louat\\Documents\\GitHub\\MyStuff\\.git;.git;
+GitRepositoriesView.GitDirectories=C\:\\Users\\louat\\git\\MyStuff\\.git;C\:\\Users\\louat\\Documents\\GitHub\\MyStuff\\.git;C\:\\Users\\louat\\Documents\\GitHub\\MyStuff\\01-Java Programming\\.git;
+GitRepositoriesView.GitDirectories.relative=C\:\\Users\\louat\\git\\MyStuff\\.git;C\:\\Users\\louat\\Documents\\GitHub\\MyStuff\\.git;.git;
+RepositorySearchDialogDeepSearch=false
+RepositorySearchDialogSearchPath=C\:\\Users\\louat\\Documents\\GitHub\\MyStuff\\01-Java Programming\\1-Algorithmics
+RepositorySearchDialogSkipHidden=false
 eclipse.preferences.version=1
