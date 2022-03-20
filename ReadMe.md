@@ -1,6 +1,6 @@
 ```css
 #MyStuff { 
-  owner: Oussama LOUATIi;
+  owner: Oussama LOUATI;
   school: INPT; 
   branch: Advanced Software Engineering for Digital services / INE1;
   year: 2021/2022; 

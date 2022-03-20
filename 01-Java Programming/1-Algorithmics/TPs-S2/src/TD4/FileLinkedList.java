@@ -1,4 +1,5 @@
 package TD4;
+import java.util.*;
 
 public class FileLinkedList<Type> implements File<Type> {
     linkedList<Type> linkedList;
