@@ -117,7 +117,7 @@ public class Rev7 {
 		int pivot = tab1[fin];
 		int compt = deb;
 		for (int i = deb; i<fin; i++) {
-			if(tab1[i]>pivot) {
+			if(tab1[i]<pivot) {
 				permute(tab1, i, compt );
 				compt++;
 			}
@@ -125,5 +125,11 @@ public class Rev7 {
 		permute(tab1, fin, compt);
 		return compt;
 	}
-
+	public void triRapide(int[] tab, int deb, int fin) {
+		if(deb<fin) {
+			int positionPivot = partition(tab, deb, fin);
+			triRapide(tab, deb, positionPivot-1);
+			triRapide(tab, positionPivot+1, fin);			
+			}
+	}
 }
