@@ -1,109 +1,129 @@
 package TD3;
 
-import java.util.Iterator;
+public class LinkedList<T> {
+		static class Maillon<T>{
+			public Maillon<T> suivant;
+			public T valeur;
+			public Maillon(T valeur) {
+				this.suivant=null;
+				this.valeur=valeur;
+			}
+		}
 
-@SuppressWarnings("rawtypes")
-public class LinkedList<T>{
-	
-	static class Maillon<T>{
-		public Maillon<T> suivant;
-		public T valeur;
-		public Maillon(T valeur) {
-			this.suivant = null;
-			this.valeur=valeur;
-		}
-		public Maillon(Maillon<T> s) {
-			this.suivant = s.suivant;
-		}
-	}
-	
 	public Maillon<T> tete;
 	
-	private boolean estVide() {
+	public LinkedList(Maillon<T> tete) {
+		super();
+		this.tete = tete;
+	}
+	
+
+	public boolean estVide() {
 		return this.tete==null;
 	}
-	
-	public LinkedList() {
-		this.tete= null;
+	public void insererTete(T valeur) {
+			Maillon<T> maillon = new Maillon<T>(valeur);
+			this.tete.suivant = this.tete;
+			this.tete= maillon;
 	}
-	public void  insererTete( T v) {
-		Maillon<T> m  =new Maillon<T>(v);
-		/*
-		if(this.estVide()) {
-			this.tete=m;
+	public void insererQueue(T valeur) {
+		Maillon<T> maillon = new Maillon<T>(valeur);
+		if(estVide()) {
+			this.insererTete(valeur);
 		}
-		else {
-			m.suivant=this.tete;
-			this.tete=m;
+		Maillon<T> m = this.tete;
+		while(m.suivant.suivant != null) {
+			m=m.suivant;
 		}
-		*/
-		m.suivant=this.tete;
-		this.tete=m;
+		m.suivant=maillon;
 	}
-	
-	
-	public void insererQueue(T val) {
-		Maillon<T> m = new Maillon<T>(val);
-		LinkedList<T> list=this;
-		if(this.estVide()) {
-			this.tete=m;
-		}
-		else {
-			/*
-			list.supprimerTete();
-			list.insererQueue(val);
-			
-			*/
-			
-			Maillon<T> q = this.tete;
-			while(q.suivant!=null) {
-				q=q.suivant;
-			}
-			q=m;
-		}
-	}
-	
-	
-	
 	public void supprimerTete() {
-		if(!this.estVide()) {
+		if(!estVide()) {
 			this.tete=this.tete.suivant;
-		}
-		else{
-			System.out.println("impossible de supprimer");
-			
 		}
 	}
 	public void supprimerQueue() {
-		if(!this.estVide()) {
-			if(this.tete.suivant==null) {
+		if(!estVide()) {
+			Maillon<T> m = this.tete;
+			if(this.tete.suivant == null) {
+				this.tete = null;
+			}else {
+				while(m.suivant.suivant != null) {
+					m = m.suivant;
+				}
+				m.suivant= null;
+			}
+		}
+	}
+	
+	/*-------- Exercice 3---------------*/
+	
+	public Maillon<T> Queue;
+
+	public LinkedList(Maillon<T> tete, Maillon<T> queue) {
+		super();
+		this.tete = tete;
+		Queue = queue;
+	}
+	
+	public boolean estVide0() {
+		return this.tete.suivant ==null;
+	}
+	public void insererTete0(T valeur) {
+		Maillon<T> m = new Maillon<T>(valeur);
+		if(estVide0()) {
+			this.tete.suivant = m;
+			this.Queue.suivant=m;			
+		}else {
+			m.suivant=this.tete.suivant;
+			this.tete.suivant=m;
+		}
+	}
+	public void insererQueue0(T valeur) {
+		Maillon<T> m = new Maillon<T>(valeur);
+		if(estVide0()) {
+			insererTete0(valeur);
+		} else {
+			this.Queue.suivant= m;
+			this.Queue=m;
+		}
+	}
+	public void supprimerTete0() {
+		if(!estVide()) {
+			if(this.tete.suivant.suivant != null) {
+				this.tete.suivant = this.tete.suivant.suivant;
+			}else {
 				this.tete=null;
+				this.Queue=this.tete;
 			}
-			Maillon<T> q = this.tete;
-			while((q.suivant).suivant!=null) {
-				q=q.suivant;
-			}
-			q.suivant= null;
+		}
+	}
+	public void supprimerQueue0() {
+		if(!estVide0()) {
+			if(this.tete.suivant.suivant == null) {
+				this.tete.suivant = null;
+				this.Queue = this.tete;
+			}else {
+				Maillon<T> m = this.tete;
+				while(m.suivant.suivant != null) {
+					m = m.suivant;
+				}
+				m.suivant = null;
+				this.Queue= m;
 			
+			}
 		}
-		else {
-			System.out.println("shieeeeeeeee");
-		}
-		
 	}
-	
-	
-	
-	
-	public LinkedList(Maillon<T> suiv, T val){
-		Maillon<T> a =  new Maillon<T>(val);
-		a.suivant = suiv;
 		
-		
-	}
-
 	
-
 	
-
+	
+	
+	
+	
 }
+	
+	
+
+	
+
