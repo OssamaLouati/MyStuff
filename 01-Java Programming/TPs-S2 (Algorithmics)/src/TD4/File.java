@@ -2,6 +2,7 @@ package TD4;
 
 import java.util.Arrays;
 
+/*
 public interface File<Type> {
     void enfiler(File<Type> file, Type x) throws ExceptionFilePleine;
 
@@ -11,7 +12,6 @@ public interface File<Type> {
 
     boolean estPleine(File<Type> file);
 }
-
 class ExceptionFileVide extends Exception {
 
 }
@@ -112,3 +112,4 @@ class FileTab<Type> implements File<Type> {
 		}
 	}
 }
+ */

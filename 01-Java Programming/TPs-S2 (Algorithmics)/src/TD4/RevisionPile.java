@@ -2,11 +2,8 @@ package TD4;
 
 import java.util.Arrays;
 
-import achraf.ExceptionNotationPolonaise;
-import achraf.ExceptionPilePleine;
-import achraf.ExceptionPileVide;
 
-public class Revision{
+public class RevisionPile{
 	public interface Pile<Type> {
 	    void empiler(Type x) throws ExceptionPilePleine;
 	
@@ -26,6 +23,8 @@ public class Revision{
 	public class ExceptionPilePleine extends Exception {
 	
 	}
+	
+	public class ExceptionNotationPolonaise extends Exception{};
 	
 	public class PileTab<Type> implements Pile<Type> {
 	    int capacite;
@@ -71,12 +70,13 @@ public class Revision{
 	                '}';
 	    }
 	}
-	public static int <T>  NaotationPolonaise(String a) throws ExceptionPilePleine, ExceptionNotationPolonaise, ExceptionPileVide {
-        PileTab<T> tab=new PileTab<>(a.length());
+	public static  int NaotationPolonaise(String a) throws ExceptionPilePleine, ExceptionNotationPolonaise, ExceptionPileVide {
+        PileTab<Integer> tab=new PileTab<>(a.length());
         for(int i=0;i<a.length();i++) {
             char s = a.charAt(i);
             if (Character.isDigit(s)) {
                 tab.empiler((int)s);
+                
             }
             else if(s == ' ') continue;
             else {
