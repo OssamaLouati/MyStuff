@@ -1,6 +1,5 @@
 package achraf;
 
-import java.util.Queue;
 
 public class TP3EXO3 {
     public class LinkedList<Type> {
