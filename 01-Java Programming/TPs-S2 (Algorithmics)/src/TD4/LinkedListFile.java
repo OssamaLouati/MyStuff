@@ -18,10 +18,10 @@ public class LinkedListFile<Type> implements File<Type>{
 		return !linkedlist.estVide();
 	}
 	public Type defiler() {
-		return (Type) linkedlist.tete;
-		linkedlist.supprimerTete();
-		return null;
-		
+		return (Type) linkedlist.tete;	
+	}
+	public String toString() {
+		return linkedlist.toString();
 	}
 	
 	
