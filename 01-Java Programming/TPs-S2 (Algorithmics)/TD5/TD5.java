@@ -14,11 +14,11 @@ public class TD5 {
         
         @SuppressWarnings("unchecked")
         
-		public entry<K,V>[] tab=new entry[capacity];
+	public entry<K,V>[] tab=new entry[capacity];
         
         @SuppressWarnings("hiding")
         
-		public class entry<K,V>{
+	public class entry<K,V>{
             private final K key;
             private V value;
 
@@ -202,8 +202,8 @@ public class TD5 {
 
 /*public class Mondico<K,V> {
         private int taille;
-        private int capacité=16;
-        private Entree<K,V>[] elements=new Entree[capacité];
+        private int capacitÃ©=16;
+        private Entree<K,V>[] elements=new Entree[capacitÃ©];
         class Entree<K,V> {
             private final   K cle ;
             private V valeur;
