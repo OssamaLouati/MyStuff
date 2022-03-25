@@ -34,7 +34,7 @@ class testFB {
 	}
 	*/
 
-	/*
+	
 	@CsvSource({
 		"1, 1",
 		"2, 2",
@@ -47,7 +47,6 @@ class testFB {
 		String res = FizzBuzz.fizzBuzz(input);
 		assertEquals(expected, res, "!!!");
 	}
-	*/
 	static Point a;
 	
 	@BeforeAll
