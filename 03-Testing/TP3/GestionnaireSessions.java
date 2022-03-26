@@ -1,47 +1,108 @@
 package tp_mock;
 
-import java.util.HashMap;
-import java.util.Map;
+import static org.junit.jupiter.api.Assertions.assertFalse;
+import static org.junit.jupiter.api.Assertions.assertTrue;
+import static org.mockito.Mockito.times;
+import static org.mockito.Mockito.verify;
+import static org.mockito.Mockito.when;
 
-public class GestionnaireSessions {
-	public class Etat {
-		int tentativesInfructueuses;
+import org.junit.jupiter.api.BeforeAll;
+import org.junit.jupiter.api.Disabled;
+import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.extension.ExtendWith;
+import org.mockito.ArgumentMatchers;
+import org.mockito.InjectMocks;
+import org.mockito.Mock;
+import org.mockito.Spy;
+import org.mockito.junit.jupiter.MockitoExtension;
+
+@ExtendWith(MockitoExtension.class)
+public class GestionnaireSessionsTest {
+	@InjectMocks
+	GestionnaireSessions sessions;
+	@Mock
+	Compte compte;
+	@Mock
+	GestionnaireComptes gestionnaireComptes;
+	@Spy
+	CompteInexistantException erreur;
+	@Disabled
+	@Test
+	public void testConnexionNormale() throws CompteInexistantException {
+		when(gestionnaireComptes.rechercherParNomUtilisateur("user1")).thenReturn(compte);
+		when(compte.validerMotPasse(ArgumentMatchers.anyString())).thenReturn(true);
+		boolean connect=sessions.connecter("user1", "password");
+		verify(compte,times(1)).setConnecte(true);
+		assertTrue(connect);
+		
 	}
-	private GestionnaireComptes gestionnaireComptes;
-	private Map<Compte, Etat> etats; 
-	public GestionnaireSessions(GestionnaireComptes gestionnaireComptes) {
-		this.gestionnaireComptes = gestionnaireComptes;
-		this.etats = new HashMap<Compte, Etat>();
+	
+	
+	@Test
+	public void testCompteInexistant() throws CompteInexistantException {		
+		when(gestionnaireComptes.rechercherParNomUtilisateur("user5")).thenThrow(erreur);
+		boolean result =sessions.connecter("user1","password");
+		verify(compte,times(0)).setConnecte(ArgumentMatchers.anyBoolean());
+		assertFalse(result);
+			
+		
 	}
-	private Etat getEtat(Compte compte) {
-		Etat etat = etats.get(compte);
-		if (etat == null) {
-			etat = new Etat();
-			etats.put(compte, etat);
+	@Test
+	public void testMotDePasseInvalide() throws CompteInexistantException {
+		when(gestionnaireComptes.rechercherParNomUtilisateur("user4")).thenReturn(compte);
+		when(compte.validerMotPasse(ArgumentMatchers.anyString())).thenReturn(false);
+		boolean result=sessions.connecter("user1", "password");
+		verify(compte, times(0)).setConnecte(ArgumentMatchers.anyBoolean());
+		assertFalse(result);
+	     
+		
+	}
+	@Disabled
+	@Test
+	public void testBlocageCompte() throws CompteInexistantException {
+		when(gestionnaireComptes.rechercherParNomUtilisateur("user1")).thenReturn(compte);
+		when(compte.validerMotPasse(ArgumentMatchers.anyString())).thenReturn(false);
+		for(int i=0;i<3;i++) {
+		     sessions.connecter("user1", "password");
+			
 		}
-		return etat;
+		verify(compte,times(1)).setBloque(true);
+		
 	}
-	public GestionnaireComptes getGestionnaireComptes() {
-		return this.gestionnaireComptes;
+	@Disabled
+	@Test
+	public void testDeblocageCompte() throws CompteInexistantException {
+		//Scenario : 2 tentatives infructueuses + tentative valide + tentative infructueuse (le compte ne doit être bloqué)
+		when(gestionnaireComptes.rechercherParNomUtilisateur("user1")).thenReturn(compte);
+		when(compte.validerMotPasse("wrong")).thenReturn(false);
+		when(compte.validerMotPasse("correct")).thenReturn(true);
+		sessions.connecter("user1", "wrong");
+		sessions.connecter("user1", "wrong");
+		sessions.connecter("user1", "correct");
+		sessions.connecter("user1", "wrong");
+		verify(compte,times(1)).setBloque(true);
+		
+		
 	}
-	public boolean connecter(String nomUtilisateur, String motPasse) {
-		Compte compte;
-		try {
-			compte = this.gestionnaireComptes.rechercherParNomUtilisateur(nomUtilisateur);
-			if (compte.estBloque()) return false;
-			if (compte.estConnecte()) return false;
-			if (compte.validerMotPasse(motPasse)) {
-				compte.setConnecte(true);
-				return true;
-			}
-			Etat etat = getEtat(compte);
-			etat.tentativesInfructueuses += 1;
-			if (etat.tentativesInfructueuses >= 3) {
-				compte.setBloque(true);
-			}
-		} catch (CompteInexistantException e) {
-			//e.printStackTrace();
-		}
-		return false;
+	@Disabled
+	@Test
+	public void testInterdictionConnexionMultipleMemeCompte() throws CompteInexistantException {
+		//....
+		compte.setConnecte(true);
+		when(gestionnaireComptes.rechercherParNomUtilisateur("user1")).thenReturn(compte);
+		when(compte.validerMotPasse("password")).thenReturn(true);
+		boolean result=sessions.connecter("user1", "password");
+		verify(compte,times(1)).setConnecte(true);
+		assertFalse(result);
+	}
+	@Disabled
+	@Test
+	public void testConnexionImpossibleCompteBloque() throws CompteInexistantException {
+		//....
+		when(gestionnaireComptes.rechercherParNomUtilisateur("user1")).thenReturn(compte);
+		compte.setBloque(true);
+		boolean result=sessions.connecter("user1","password");
+		verify(compte,times(0)).setConnecte(true);
+		assertFalse(result);
 	}
 }
