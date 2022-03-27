@@ -110,17 +110,9 @@ public class LinkedList<T> {
 				}
 				m.suivant = null;
 				this.Queue= m;
-			
 			}
 		}
 	}
-		
-	
-	
-	
-	
-	
-	
 }
 	
 	
