@@ -84,16 +84,22 @@ public class TD5 {
 
         public V recherche(K key){
             for(int i=0;i<taille;i++){
-                if(tab[i]!=null){if (tab[i].getKey().equals(key)) return tab[i].getValue();}}
+                if(tab[i]!=null){
+			if (tab[i].getKey().equals(key)) return tab[i].getValue();
+		}
+	    }
             return null;}
 
         public void inserer(K key,V value){
             int j=0;
             for(int i=0;i<taille;i++){
-                if(tab[i]!=null){if (tab[i].getKey().equals(key)){
+                if(tab[i]!=null){
+			if (tab[i].getKey().equals(key)){
                     tab[i].setValue(value);
                     j++;
-                }}}
+             }
+		}
+	    }
             if(j==0){
                 if(taille>=capacity){this.setCapacity(capacity*2);
                     this.setTab(Arrays.copyOf(tab,capacity));
