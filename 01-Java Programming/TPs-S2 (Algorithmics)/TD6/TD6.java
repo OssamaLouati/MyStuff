@@ -6,6 +6,7 @@ import java.util.List;
 import java.util.Objects;
 
 public class TD6 {
+	/*
     public static class Arbre<Type>{
         public Noeud racine;
         public static class Noeud<Type> {
@@ -58,7 +59,7 @@ public class TD6 {
             this.racine = racine;
         }
     }
-
+	*/
     public static class ABR<Type>{
     	
         public Noeud racine;
