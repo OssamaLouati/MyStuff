@@ -32,16 +32,16 @@ int main ( )
 	for ( i = 0 ; i<N; i ++)
 
 	// create philosopher processes
-	pthread_ create (&ph[ i ] ,NULL, philospher ,&(NumPhi[ i ] ) ) ;
+	pthread_create(&ph[ i ] ,NULL, philospher ,&(NumPhi[ i ] ) ) ;
 	//attendre la fin des threads
 	
 	i =0;
 	for(i = 0; i < N; i++)
             //créer un mechanisme pour attendre le thread se termine
 			pthread_join(thread_id[i], NULL);
-			printf ( " fin des threads \n" ) ;
+			printf( " fin des threads \n" ) ;
 	return 0;
-	while ( i<N && ( pthread_join (ph[ i ++],NULL) = = 0 ));
+	while ( i<N && ( pthread_join(ph[ i ++],NULL) = = 0 ));
 	printf ( " fin des threads \n" ) ;
 	return 0 ;
 }
@@ -67,13 +67,13 @@ while ( nb )
 
 
 int test(int phnum){
-       if ( fourch [G] && fourch [ phnum ] )
+       if( fourch [G] && fourch [ phnum ] )
 {
 
 	// prendrer les fourchettes
 	fourch [LEFT] = 0 ;
 	fourch [ phnum ] = 0 ;
-	printf ( " philosophe [%d ] mange \n" , i ) ;
+	printf( " philosophe [%d ] mange \n" , i ) ;
 	//quitter la section critique
 	sem_post(&mutex ) ;
 
@@ -85,7 +85,7 @@ int test(int phnum){
 	// élibrer les fourchettes
 	fourch [LEFT] = 1 ;
 	fourch [phnum] = 1 ;
-	printf ( " philosophe [%d ] a fini de manger\n" , i ) ;
+	printf( " philosophe [%d ] a fini de manger\n" , i ) ;
 
 	//quitter la section critique
 	sem_post(&mutex ) ;
