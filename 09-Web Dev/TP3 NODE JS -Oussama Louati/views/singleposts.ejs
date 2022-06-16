@@ -1,0 +1,34 @@
+<html lang="en">
+<head>
+ <meta charset="UTF-8">
+ <meta http-equiv="X-UA-Compatible" content="IE=edge">
+ <meta name="viewport" content="width=device-width, initial-scale=1.0">
+ <link rel="stylesheet" href="/style.css">
+ <title>Single Post</title>
+</head>
+<body>
+ <h1>Single post page</h1>
+ <%- include('./partials/navbar.ejs') %>
+ <div class="singlepost">
+ <h2>
+ <%= posts.title %>
+ </h2>
+ <div class="content">
+ <p>
+ <%= posts.body %>
+ </p>
+ </div>
+ <a class="delete" data-del="<%= posts.id %>">Delete</a>
+ </div>
+ <script>
+ const delreq = document.querySelector('a.delete');
+ delreq.addEventListener('click', (e) => {
+ const endpoint = `/posts/${delreq.dataset.del}`;
+ fetch(endpoint, {
+ method: 'DELETE',
+ }).then(window.location.href = '/posts')
+ });
+ </script>
+ <%- include('./partials/footer.ejs') %>
+</body>
+</html>

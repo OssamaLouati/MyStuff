@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TP JS2</title>
+</head>
+
+<body>
+
+    <script type="text/javascript" src="src/js/script.js"></script>
+    <button id="btn" onclick="random_bg_color()">Change color</button>
+    <script>
+        document.getElementById("btn").addEventListener("click",
+        function random_bg_color() {
+            var y = Math.random() * (0,255);
+            var x = Math.random() * (0,255);
+            var z = Math.random() * (0,255);
+            var Color = "rgb(" + x + "," + y + "," + z + ")";
+
+            document.body.style.background = Color;
+        });
+    </script>
+    
+
+</body>
+</html>
